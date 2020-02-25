@@ -29,18 +29,12 @@ feedparser.parse(url).then(items => {
 
   // Write it to a file so you can know how to parse it better
   // The callback is mandatory, but it's useless here
-  fs.writeFile('feed.json', JSON.stringify(items, null, 2), 'utf-8', (data) => {});
+  fs.writeFile('feed.json', JSON.stringify(items, null, 2), 'utf-8', () => {});
 });
 
-// Define the default route
-app.get('/', (req, res) => {
-  // Render the page
-  res.render('App.vue');
-
-  // Send the data to the client using socket.io
-  io.on('connection', io => {
-    io.emit('feed', {
-      feed: feed
-    });
+// This should be outside of any routes, because it needs to start listening as soon as the file is executed 
+io.on('connection', io => {
+  io.emit('feed', {
+    feed: feed
   });
 });
