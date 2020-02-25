@@ -27,9 +27,7 @@ import io from 'socket.io-client'
          subscribeToFeed() {
             const socket = io('http://localhost:8081');
             socket.on('feed', data => {
-               data.feed.entries().forEach(feed => {
-                  this.feeds.push(feed);
-               });
+               this.feeds = [...data.feed]
             });
          }
       }
