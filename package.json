@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "feedparser": "^2.2.9",
     "feedparser-promised": "^2.0.1",
     "fs": "0.0.1-security",
